@@ -41,7 +41,7 @@ const renderFullPage = (html, preloadedState) => {
           // http://redux.js.org/docs/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${stringifiedState}
         </script>
-        <script src="/static/bundle.js"></script>
+        <script src="/public/bundle.js"></script>
       </body>
     </html>
     `;

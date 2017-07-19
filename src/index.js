@@ -5,8 +5,7 @@ const PORT = 8081;
 import path from 'path';
 import React from 'react';
 
-app.use('/static', express.static('static'));
-// app.get('/', (req, res) => res.send('Hello World!!!'));
+app.use('/public', express.static('public'));
 
 import { handleRender } from './handleRender';
 app.use(handleRender);

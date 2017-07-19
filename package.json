@@ -6,12 +6,13 @@
   "scripts": {
     "test": "mocha --compilers js:babel-register",
     "dev": "nodemon src/index.js --exec babel-node",
-    "build": "babel src -d dist",
+    "build": "babel src -d dist & webpack",
+    "clean": "rm -rf node_modules dist public",
     "serve": "node dist/index.js",
-    "start": "npm run build; npm run serve;",
-    "docker-build": "docker build -t todo .",
-    "docker-run": "docker run -p 8081:8081 todo",
-    "docker-push": "docker push todo",
+    "start": "npm run docker-build; npm run docker-run;",
+    "docker-build": "docker build -t vitorfranca/todo .",
+    "docker-run": "docker run -p 8081:8081 vitorfranca/todo",
+    "docker-push": "docker push vitorfranca/todo",
     "deploy": "npm run docker-build; npm run docker-push",
     "webpack": "webpack --progress --colors --watch"
   },

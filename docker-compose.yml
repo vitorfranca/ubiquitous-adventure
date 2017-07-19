@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  mongo:
+    image: 'mongo'
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data:/data
+
+  node:
+    depends_on:
+      - 'mongo'
+    ports:
+      - "8081:8081"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: npm run serve
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/todo_development
