@@ -1,11 +1,14 @@
 import express from 'express';
 const app = express();
+const PORT = 8081;
 
-app.get('/', function (req, res) {
-  res.send('Hello World!!!');
-});
+import path from 'path';
+import React from 'react';
 
+app.use('/static', express.static('static'));
+// app.get('/', (req, res) => res.send('Hello World!!!'));
 
-app.listen(8081, function () {
-  console.log('app listening on port 8081!');
-});
+import { handleRender } from './handleRender';
+app.use(handleRender);
+
+app.listen(PORT, () => console.log(`app listening on port ${PORT}!`));

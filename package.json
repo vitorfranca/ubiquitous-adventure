@@ -5,26 +5,33 @@
   "main": "dist/index.js",
   "scripts": {
     "test": "mocha --compilers js:babel-register",
-    "dev": "nodemon lib/index.js --exec babel-node",
-    "build": "babel lib -d dist",
+    "dev": "nodemon src/index.js --exec babel-node",
+    "build": "babel src -d dist",
     "serve": "node dist/index.js",
     "start": "npm run build; npm run serve;",
     "docker-build": "docker build -t todo .",
     "docker-run": "docker run -p 8081:8081 todo",
     "docker-push": "docker push todo",
-    "deploy": "npm run docker-build; npm run docker-push"
+    "deploy": "npm run docker-build; npm run docker-push",
+    "webpack": "webpack --progress --colors --watch"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3",
+    "prop-types": "^15.5.10",
+    "qs": "^6.5.0",
     "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "webpack": "^3.3.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
+    "babel-loader": "^7.1.1",
     "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
     "mocha": "^3.4.2",
