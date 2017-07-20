@@ -1,7 +1,7 @@
 'use strict';
 
 import React from 'react';
-import fetch from '../lib/fetch';
+import toDoService from '../services/ToDo';
 
 class CreateTodo extends React.Component {
   constructor(props) {
@@ -15,23 +15,8 @@ class CreateTodo extends React.Component {
   }
 
   submit() {
-    fetch(
-      'http://localhost:8081/api/ToDo',
-      {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          title: this.state.title,
-          done: false
-        })
-      }
-    )
-      .then(res => res.json())
-      .then(data => this.props.onCreate)
-      .catch(err => console.error(err));
+    toDoService.create(this.state)
+      .then(data => this.props.onCreate);
     this.setState({ title: '' });
   }
 

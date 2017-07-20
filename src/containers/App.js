@@ -3,6 +3,7 @@
 import React from 'react';
 import { createStore } from 'redux';
 import { connect } from 'react-redux';
+import toDoService from '../services/ToDo';
 
 import {
   incrementCounter,
@@ -20,8 +21,7 @@ class App extends React.Component {
   }
 
   updateList() {
-    fetch('http://localhost:8081/api/ToDo')
-      .then(res => res.json())
+    toDoService.list()
       .then(todos => this.setState({todos}));
   }
 

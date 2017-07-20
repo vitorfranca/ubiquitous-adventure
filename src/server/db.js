@@ -1,7 +1,7 @@
 const mongo = require('mongodb');
 const MongoClient = mongo.MongoClient;
 const ObjectId = mongo.ObjectID;
-const mongoUrl = require('./config').mongoUrl;
+const mongoUrl = require('../config').mongoUrl;
 
 const connect = () => {
   return new Promise((resolve, reject) => {

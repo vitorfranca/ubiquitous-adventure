@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import toDoService from '../services/ToDo';
 
 class ToDo extends React.Component {
   constructor(props) {
@@ -12,24 +13,11 @@ class ToDo extends React.Component {
   }
 
   toggleStatus() {
-    const { _id, ...body } = this.state
-    fetch(
-      `http://localhost:8081/api/ToDo/${this.state._id}`,
-      {
-        method: 'PUT',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      });
+    toDoService.update(this.state);
   }
 
   delete() {
-    fetch(
-      `http://localhost:8081/api/ToDo/${this.state._id}`,
-      { method: 'DELETE' }
-    );
+    toDoService.delete(this.state._id);
   }
 
   handleChange(e) {

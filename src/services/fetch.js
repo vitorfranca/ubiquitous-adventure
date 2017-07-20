@@ -1,5 +1,3 @@
-// import 'whatwg-fetch';
-
 let _fetch;
 if (typeof window === 'undefined') {
   console.log('is on node');
