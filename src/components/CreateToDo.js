@@ -16,7 +16,7 @@ class CreateTodo extends React.Component {
 
   submit() {
     toDoService.create(this.state)
-      .then(data => this.props.onCreate);
+      .then(this.props.onCreate);
     this.setState({ title: '' });
   }
 

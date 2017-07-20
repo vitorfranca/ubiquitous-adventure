@@ -2,12 +2,13 @@
 
 import React from 'react';
 import toDoService from '../services/ToDo';
+import { connect } from 'react-redux';
+import { removeTodo } from '../actions';
 
 class ToDo extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isEditingTitle: false,
       ...props.todo
     };
   }
@@ -18,6 +19,7 @@ class ToDo extends React.Component {
 
   delete() {
     toDoService.delete(this.state._id);
+    this.props.dispatch(removeTodo(this.state._id));
   }
 
   handleChange(e) {
@@ -63,4 +65,4 @@ class ToDo extends React.Component {
   }
 }
 
-export default ToDo;
+export default connect()(ToDo);

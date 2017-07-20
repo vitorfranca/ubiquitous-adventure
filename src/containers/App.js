@@ -7,29 +7,27 @@ import toDoService from '../services/ToDo';
 
 import {
   incrementCounter,
-  decrementCounter
+  decrementCounter,
+  populateTodos
 } from '../actions';
 
-import Counter    from './../components/Counter';
+// import Counter    from './../components/Counter';
 import CreateToDo from './../components/CreateToDo';
 import ListToDo   from './../components/ListToDo';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { todos: props.todos };
-  }
-
   updateList() {
     toDoService.list()
-      .then(todos => this.setState({todos}));
+      .then(todos => {
+        this.props.dispatch(populateTodos(todos))
+      });
   }
 
   render() {
     return (
       <div>
         <CreateToDo onCreate={this.updateList.bind(this)}/>
-        <ListToDo todos={this.state.todos}/>
+        <ListToDo todos={this.props.todos}/>
       </div>
     );
   }
