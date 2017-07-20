@@ -6,7 +6,7 @@ services:
     ports:
       - "27017:27017"
     volumes:
-      - ./data:/data
+      - ./data/db:/data/db
 
   node:
     depends_on:
@@ -18,4 +18,4 @@ services:
       dockerfile: Dockerfile
     command: npm run serve
     environment:
-      - MONGO_URL=mongodb://mongo:27017/todo_development
+      - MONGO_URL=mongodb://mongo:27017/ToDo'

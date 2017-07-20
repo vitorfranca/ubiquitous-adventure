@@ -4,26 +4,34 @@ import { createStore } from 'redux';
 import { renderToString } from 'react-dom/server';
 import qs from 'qs';
 
-import counterApp from './reducers';
-import App from './containers/App';
+import db from './db';
+
+import counterApp from '../reducers';
+import App from '../containers/App';
 
 export const handleRender = (req, res) => {
   const params = qs.parse(req.query);
   const counter = parseInt(params.counter, 10) || 0;
   let preloadedState = { counter };
 
-  const store = createStore(counterApp, preloadedState);
+  db.find("ToDo")
+    .then(todos => {
+      preloadedState.todos = todos;
 
-  // Render the component to a string
-  const html =
-    renderToString(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+      const store = createStore(counterApp, preloadedState);
 
-  const finalState = store.getState();
-  res.send(renderFullPage(html, finalState));
+      // Render the component to a string
+      const html =
+        renderToString(
+          <Provider store={store}>
+            <App />
+          </Provider>
+        );
+
+      const finalState = store.getState();
+      res.send(renderFullPage(html, finalState));
+    });
+
 };
 
 const renderFullPage = (html, preloadedState) => {

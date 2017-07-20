@@ -20,13 +20,15 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.15.3",
+    "mongodb": "^2.2.30",
+    "node-fetch": "^1.7.1",
     "prop-types": "^15.5.10",
     "qs": "^6.5.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "redux": "^3.7.2",
-    "webpack": "^3.3.0"
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
@@ -36,6 +38,7 @@
     "babel-preset-stage-2": "^6.24.1",
     "babel-register": "^6.24.1",
     "mocha": "^3.4.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack": "^3.3.0"
   }
 }
